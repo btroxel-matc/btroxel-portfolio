@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+#Author: Bryan Troxel
+#Description: This script audits AWS security group configurations to ensure none allow unrestricted inbound traffic.
 import boto3, argparse, botocore
 
 def main():
