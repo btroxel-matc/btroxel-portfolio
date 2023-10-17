@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
+#Author: Bryan Troxel
+#Description: This script will bring back all roles and the policies that belong to them. This includes both managed and unmanaged policies.
 import boto3
 import botocore
 import datetime
-import pytz
-#if datetime(2023, 10, 14, 12, 0, 0) > (pytz.utc.localize(datetime.datetime.utcnow())-datetime.timedelta(days=90)):
+
 def main():
     try:
         iamclient = boto3.client('iam')
