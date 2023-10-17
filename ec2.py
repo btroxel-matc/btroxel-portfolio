@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+#Author: Bryan Troxel
+#Description: This script will run an EC2 instance with an Amazon Linux 2 AMI. The arguments allow the option to add a name to your instance along with attaching an existing Key Pair. Exceptions have been given for incorrect input.
 import boto3,json,argparse,random,string,botocore
 parser = argparse.ArgumentParser(description='Week 6 ec2 Script.')
 parser.add_argument('-n','--instancename',dest='tag_name', default='', type=str, help='Enter a tag name for your instance.')
