@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-
+#Author: Bryan Troxel
+#Description: This script will collect a report on an ec2 instance and export the report as a csv. The arguments allow for customization of your filter name and value.
 import boto3,csv,argparse
 
 def Get_Instances(name=None, values=None):
