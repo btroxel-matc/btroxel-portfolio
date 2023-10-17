@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-import boto3,json,datetime
+#Author: Bryan Troxel
+#Description: This script creates a bucket based off of the input from the user from the arguments. If the bucket already exists, it will automatically append a string of 10 characters to the bucket.
 
+import boto3,json,datetime
 import random,argparse,string,botocore
 
 s3client = boto3.client('s3')
 bucket_name = 'btroxel-fall23-buckettest'
 
-parser = argparse.ArgumentParser(description='Arguments to supply bucket name for our s3website')
-parser.add_argument('-s','--sitename',dest='site_name', default='', type=str, help='Enter a unique bucket name for your s3website')
+parser = argparse.ArgumentParser(description='Arguments to supply bucket name.')
+parser.add_argument('-s','--sitename',dest='site_name', default='', type=str, help='Enter a unique bucket name.')
 
 args = parser.parse_args()
 
