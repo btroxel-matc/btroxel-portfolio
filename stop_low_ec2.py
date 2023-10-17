@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-
+#Author: Bryan Troxel
+#Description: This script enables an sns alert to be sent out to a specified email using the "sns.py" script, then launches an instance and attaches a CloudWatch alarm to stop the instance if the CPU goes below 10%.
 import boto3
 import ec2,sns
 
@@ -18,7 +19,7 @@ instance = ec2.Create_EC2(image,ec2_client)
 cw_client = boto3.client('cloudwatch')
 
 topicARN = sns.CreateSNSTopic('BryanDemoTopic')
-subscriptionARN = sns.SubscribeEmail(topicARN,'btroxel@madisoncollege.edu')
+subscriptionARN = sns.SubscribeEmail(topicARN,#Enter email here.)
 
 response = cw_client.put_metric_alarm(
 
