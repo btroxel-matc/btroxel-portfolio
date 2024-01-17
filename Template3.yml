@@ -1,0 +1,47 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: 'Root Stack for the Network and Compute Stacks'
+
+Resources:
+  NetworkStack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://cf-templates-qzkhlt7kk2i5-us-east-1.s3.amazonaws.com/StackTemplates/Template1.yml
+
+  ComputeStack:
+    Type: AWS::CloudFormation::Stack
+    DependsOn: NetworkStack
+    Properties:
+      TemplateURL: https://cf-templates-qzkhlt7kk2i5-us-east-1.s3.amazonaws.com/StackTemplates/Template2.yml
+      Parameters:
+          VPC:
+            Fn::GetAtt:
+            - NetworkStack
+            - Outputs.VPC
+          PublicSubnet1:
+            Fn::GetAtt:
+            - NetworkStack
+            - Outputs.PublicSubnet1
+          PublicSubnet2:
+            Fn::GetAtt:
+            - NetworkStack
+            - Outputs.PublicSubnet2
+          PrivateSubnet1:
+            Fn::GetAtt:
+            - NetworkStack
+            - Outputs.PrivateSubnet1
+          PrivateSubnet2:
+            Fn::GetAtt:
+            - NetworkStack
+            - Outputs.PrivateSubnet2
+          WebInstanceSecurityGroup:
+            Fn::GetAtt:
+            - NetworkStack
+            - Outputs.WebInstanceSecurityGroup
+          BastionSecurityGroup:
+            Fn::GetAtt:
+            - NetworkStack
+            - Outputs.BastionSecurityGroup
+          ALBSecurityGroup:
+            Fn::GetAtt:
+            - NetworkStack
+            - Outputs.ALBSecurityGroup
